@@ -975,7 +975,6 @@ def main():
                     data=zip_data,
                     file_name=zip_filename,
                     mime="application/zip",
-                    width='stretch',
                     key="download_all_main"
                 )
                 st.info(f"📁 ZIP file contains {len(images_to_zip)} images")
@@ -1025,7 +1024,7 @@ def main():
         
         # Generate button with loading state
         button_text = "🔄 Generating..." if st.session_state.generating else "🚀 Generate Images"
-        if st.button(button_text, type="primary", width='stretch', disabled=st.session_state.generating):
+        if st.button(button_text, type="primary", disabled=st.session_state.generating):
             # Check if we have batch projects or single project
             if project_mode == "Batch Projects":
                 if not st.session_state.project_titles or not st.session_state.project_prompts:
@@ -1525,7 +1524,7 @@ def main():
             if st.session_state.failed_prompts:
                 st.markdown("---")
                 st.markdown("### 🔄 Retry Failed Prompts")
-                if st.button("🔄 Retry Failed Prompts", width='stretch'):
+                if st.button("🔄 Retry Failed Prompts"):
                     # Clear failed prompts and continue with remaining prompts
                     st.session_state.failed_prompts = []
                     st.rerun()
@@ -1628,12 +1627,11 @@ def main():
                     data=zip_data,
                     file_name=zip_filename,
                     mime="application/zip",
-                    width='stretch',
                     key="download_all_sidebar"
                 )
                 st.info(f"📁 Contains {len(st.session_state.all_generated_images)} images")
         
-        if st.button("🔄 Clear All", width='stretch'):
+        if st.button("🔄 Clear All"):
             try:
                 # Set clearing state flag to prevent any downloads
                 st.session_state.clearing_state = True
@@ -1659,7 +1657,7 @@ def main():
                 # Reset clearing flag if error occurs
                 st.session_state.clearing_state = False
         
-        if st.button("💾 Save Settings", width='stretch'):
+        if st.button("💾 Save Settings"):
             # Save current settings to session state
             st.session_state.saved_settings = {
                 "title": title,
